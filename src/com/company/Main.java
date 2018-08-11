@@ -60,28 +60,28 @@ public class Main {
         int mid, j = 0;
         long temp = 0;
         try {
+            nb = (nb % 2 == 0) ? nb : nb + 1;
+            low = (low % 2 == 0) ? low : low - 1;
             mid = (nb + low) / 2;
-            if (mid % 2 == 0) {
-                for (int k = 0; k < OPERATIONS.length; k++) {
-                    res = evaluate(t, mid, low, OPERATIONS[k]);
-                    t[mid - 1] = res;
-                    evaluate(t, nb, mid - 1, OPERATIONS[k]);
-                    t[mid - 1] = temp;
-                }
-            } else if (mid > low) {
-                try {
-                    mid = (mid + low) / 2;
-                    generateSolution(t, mid, low);
-                } catch (Exception e) {
-                    System.out.println("rec " + e);
-                }
-            } else if (mid < nb) {
-                try {
-                    mid = (mid + nb) / 2;
-                    if (mid < nb)
-                        generateSolution(t, nb, mid);
-                } catch (Exception e) {
-                    System.out.println("rec " + e);
+            for (int k = 0; k < OPERATIONS.length; k++) {
+                if (mid % 2 == 0) {
+                    res = evaluate(t, mid - 1, low, OPERATIONS[k]);
+                    t[--mid] = res;
+                    if (mid < nb) {
+                        try {
+                            generateSolution(t, nb, mid);
+                        } catch (Exception e) {
+                            System.out.println("rec " + e);
+                        }
+                    }
+                    evaluate(t, nb, mid, OPERATIONS[k]);
+                    t[mid] = temp;
+                } else if (mid > low) {
+                    try {
+                        generateSolution(t, mid, low);
+                    } catch (Exception e) {
+                        System.out.println("rec " + e);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -92,7 +92,7 @@ public class Main {
     private long evaluate(long[] t, int nb, int mid, Operation op) {
         int i;
         long res = 0;
-        for (i = mid; i < nb - 1; i++) {
+        for (i = mid; i < nb; i++) {
             res = op.eval(t[i], t[i + 1]);
             if (res != 0) {
                 solution.add(Math.max(t[i], t[i + 1]) + " " +
