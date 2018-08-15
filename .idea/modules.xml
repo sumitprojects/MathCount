@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Maths.iml" filepath="$PROJECT_DIR$/Maths.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MathCount.iml" filepath="$PROJECT_DIR$/MathCount.iml" />
     </modules>
   </component>
 </project>

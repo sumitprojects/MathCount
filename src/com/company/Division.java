@@ -13,7 +13,7 @@ public class Division implements Operation {
             if (x % y == 0 && y != 0) {
                 return x / y;
             } else {
-                return 0l;
+                return x / y;
             }
         } else {
             return 0l;

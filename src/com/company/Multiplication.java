@@ -5,11 +5,11 @@ public class Multiplication implements Operation {
     public Long eval (Long x, Long y) {
         long r = x * y;
     
-        if (r <= x || r <= y) {
+        /*if (r <= x || r <= y) {
             return 0l;
-        } else {
+        } else {*/
             return r;
-        }
+        /*}*/
     }
     
     @Override
