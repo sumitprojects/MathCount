@@ -104,17 +104,21 @@ public class Main {
     }
     
     public void generateSolution (List<Long> answer) {
-        int i = 0, j = 4,k;
+        int i , j = 4,k,size = answer.size();
         Long ans = 0l;
         Long[] com = new Long[answer.size()];
-            do {
+        if(answer.size()/4 > 2){
+            size = size -4;
+        }
+        while(j < size){
                 i = 0;
+                
                 com[i] = answer.get(0);
                 i++;
                 for (k = j; k < answer.size(); k += 4) {
                     com[i] = answer.get(k);
                     i++;
-                    System.out.println(generateCombination(com, i));
+                    //System.out.println(generateCombination(com, i));
                 }
                 System.out.print("[");
                 for (int l = 0; l < i; l++) {
@@ -122,7 +126,7 @@ public class Main {
                 }
                 System.out.println("]");
                 j++;
-            }while(j<answer.size());
+            }
         System.out.println(answer);
     
     }
