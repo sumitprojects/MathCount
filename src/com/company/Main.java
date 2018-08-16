@@ -10,7 +10,7 @@ public class Main {
     
     public static void main (String[] args) {
         Long numbers[] = {5l, 4l, 3l, 2l};
-        long total = 10;
+        Long total = 120l;
         Main main = new Main();
   /*          if(main.findSolution(numbers,numbers.length,total)){
                 System.out.println("The count is good");
@@ -20,8 +20,8 @@ public class Main {
             }
   */
         main.generateSolution(main.generateCombination(numbers, numbers.length));
+        main.findingSolution(total);
         main.printSolution();
-        //main.forloops(0,3,3,new char[]{'k','j','i'},1);
     }
     
 /*    public boolean findSolution (long[] t, int nb, long total) {
@@ -103,37 +103,66 @@ public class Main {
             System.out.print(solution.get(i) + "\t");
             if ((i + 1) % 4 == 0) System.out.println();
         }*/
-        forloops(0, 4, 3, solution, 1);
+        printingSolution(0, 4, solution);
     }
     
-    void forloops (int low, int end, int loops, ArrayList<String> name, int inc) {
-        int i = low, j = low + 4, l = low, e = end, k = end + 4, count = 0;
+    void findingSolution (Long total) {
+        int i = 0, j = 0 + 4, k = 4 + 4, count = 0;
+        outer:
         while (count < 4) {
             while (i < 4) {
                 while (j < 8) {
-                    while (k < name.size()) {
-                        System.out.println("--------------------------------------------");
-                        System.out.println(name.get(i));
-                        System.out.println(name.get(j));
-                        System.out.println(name.get(k));
-                        if(name.get(i).endsWith("10")){
-                            System.out.println("answer in " + count + " counts");
-                        }else if(name.get(j).endsWith("10")){
-                            System.out.println("answer in " + count + " counts");
-                        }else if(name.get(k).endsWith("10")){
-                            System.out.println("answer in " + count + " counts");
+                    while (k < solution.size()) {
+                        if (solution.get(i).endsWith(String.valueOf(total))) {
+                            System.out.println("answer in " + i + " counts");
+                            System.out.println(solution.get(i));
+                            break outer;
+                        } else if (solution.get(j).endsWith(String.valueOf(total))) {
+                            System.out.println("answer in " + j + " counts");
+                            System.out.println(solution.get(i));
+                            System.out.println(solution.get(j));
+                            break outer;
+                        } else if (solution.get(k).endsWith(String.valueOf(total))) {
+                            System.out.println("answer in " + k + " counts");
+                            System.out.println(solution.get(i));
+                            System.out.println(solution.get(j));
+                            System.out.println(solution.get(k));
+                            break outer;
                         }
-                        System.out.println("--------------------------------------------");
                         k++;
                         if (k % 4 == 0) break;
                     }
                     j++;
-                }i++;j = 4;
+                }
+                i++;
+                j = 4;
             }
             count++;
         }
     }
     
+    void printingSolution (int low, int end, ArrayList<String> name) {
+        int i = low, j = low + 4, k = end + 4, count = 0;
+        while (count < 4) {
+            while (i < 4) {
+                while (j < 8) {
+                    while (k < name.size()) {
+                        System.out.println("--------------------------------------------");
+                        System.out.print(name.get(i) + " \t");
+                        System.out.print(name.get(j) + " \t");
+                        System.out.println(name.get(k) + " \t");
+                        System.out.println("--------------------------------------------");
+                        k++;
+                        if (k % 4 == 0) break;
+                    }
+                    j++;
+                }
+                i++;
+                j = 4;
+            }
+            count++;
+        }
+    }
     
     public void generateSolution (List<Long> answer) {
         int i, j = 4, k, m = 0, size = answer.size();
@@ -165,7 +194,7 @@ public class Main {
             m++;
             j = 4;
         }
-        System.out.println(answer);
+        //System.out.println(answer);
         
     }
 }
