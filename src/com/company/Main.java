@@ -9,7 +9,7 @@ public class Main {
     private ArrayList<String> solution = new ArrayList<>();
     
     public static void main (String[] args) {
-        Long numbers[] = {4l, 3l, 2l, 1l};
+        Long numbers[] = {5l, 4l, 3l, 2l};
         long total = 10;
         Main main = new Main();
   /*          if(main.findSolution(numbers,numbers.length,total)){
@@ -21,6 +21,7 @@ public class Main {
   */
         main.generateSolution(main.generateCombination(numbers, numbers.length));
         main.printSolution();
+        //main.forloops(0,3,3,new char[]{'k','j','i'},1);
     }
     
 /*    public boolean findSolution (long[] t, int nb, long total) {
@@ -78,7 +79,7 @@ public class Main {
                         c = new Combination(new Long[]{numbers[i], numbers[i + 1], ans});
                         map.put(c, OPERATIONS[k].operator());
                     } catch (Exception e) {
-                        System.out.println(e);
+                        System.out.println("Msg: " + e);
                     }
                 }
                 k++;
@@ -97,23 +98,48 @@ public class Main {
     }
     
     public void printSolution () {
+       /* System.out.println(solution.size());
         for (int i = 0; i < solution.size(); i++) {
             System.out.print(solution.get(i) + "\t");
-            if((i+1)%4 == 0) System.out.println();
+            if ((i + 1) % 4 == 0) System.out.println();
+        }*/
+        forloops(0, 4, 3, solution, 1);
+    }
+    
+    void forloops (int low, int end, int loops, ArrayList<String> name, int inc) {
+        int i = low, j = low + 4, l = low, e = end, k = end + 4, count = 0;
+        while (count < 4) {
+            while (i < 4) {
+                while (j < 8) {
+                    while (k < name.size()) {
+                        System.out.println("--------------------------------------------");
+                        System.out.println(name.get(i));
+                        System.out.println(name.get(j));
+                        System.out.println(name.get(k));
+                        System.out.println("--------------------------------------------");
+                        k++;
+                        if (k % 4 == 0) break;
+                    }
+                    j++;
+                }i++;j = 4;
+            }
+            count++;
         }
     }
     
+    
     public void generateSolution (List<Long> answer) {
-        int i , j = 4,k,size = answer.size();
-        Long ans = 0l;
+        int i, j = 4, k, m = 0, size = answer.size();
+        //Long ans = 0l;
         Long[] com = new Long[answer.size()];
-        if(answer.size()/4 > 2){
-            size = size -4;
+        if (answer.size() / 4 > 2) {
+            size = size - 4;
         }
-        while(j < size){
+        while (m < 4) {
+            while (j < size) {
                 i = 0;
                 
-                com[i] = answer.get(0);
+                com[i] = answer.get(m);
                 i++;
                 for (k = j; k < answer.size(); k += 4) {
                     com[i] = answer.get(k);
@@ -125,9 +151,13 @@ public class Main {
                     System.out.print(com[l] + " ");
                 }
                 System.out.println("]");
+                generateCombination(com, i);
                 j++;
             }
+            m++;
+            j = 4;
+        }
         System.out.println(answer);
-    
+        
     }
 }
