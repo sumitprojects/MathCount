@@ -116,6 +116,13 @@ public class Main {
                         System.out.println(name.get(i));
                         System.out.println(name.get(j));
                         System.out.println(name.get(k));
+                        if(name.get(i).endsWith("10")){
+                            System.out.println("answer in " + count + " counts");
+                        }else if(name.get(j).endsWith("10")){
+                            System.out.println("answer in " + count + " counts");
+                        }else if(name.get(k).endsWith("10")){
+                            System.out.println("answer in " + count + " counts");
+                        }
                         System.out.println("--------------------------------------------");
                         k++;
                         if (k % 4 == 0) break;
@@ -146,11 +153,12 @@ public class Main {
                     i++;
                     //System.out.println(generateCombination(com, i));
                 }
-                System.out.print("[");
+                /*System.out.print("[");
                 for (int l = 0; l < i; l++) {
                     System.out.print(com[l] + " ");
                 }
                 System.out.println("]");
+                */
                 generateCombination(com, i);
                 j++;
             }
