@@ -9,8 +9,8 @@ public class Main {
     private ArrayList<String> solution = new ArrayList<>();
     
     public static void main (String[] args) {
-        Long numbers[] = {5l, 4l, 3l, 2l};
-        Long total = 120l;
+        Long numbers[] = {100l, 7l, 2l};
+        Long total = 186l;
         Main main = new Main();
   /*          if(main.findSolution(numbers,numbers.length,total)){
                 System.out.println("The count is good");
@@ -52,7 +52,6 @@ public class Main {
                 }
             }
         }
-        
         return false;
     }*/
     
